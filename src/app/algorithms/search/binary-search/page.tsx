@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Controller } from "./controller";
 
 const data = new Array(500)
