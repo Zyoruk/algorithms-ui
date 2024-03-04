@@ -19,10 +19,17 @@ type ObserverDataEventGet = {
   edges: number[];
 };
 
+type ObserverDataEventDijkstra = {
+  type: "dijkstra";
+  previousNodes: { [key: number]: number };
+  endNode: number;
+};
+
 export type ObservedDataEventGraph =
   | ObserverDataEventAdd
   | ObserverDataEventRemove
-  | ObserverDataEventGet;
+  | ObserverDataEventGet
+  | ObserverDataEventDijkstra;
 
 export abstract class Observer<T> {
   abstract update(
