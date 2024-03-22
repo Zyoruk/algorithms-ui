@@ -1,3 +1,3 @@
 type Route = { path: string;name: string; };
- const routes: Route[] = [];
+ const routes: Route[] = [{"path":"/algorithms","name":"/algorithms"},{"path":"/algorithms/search/binary-search","name":"/algorithms/search/binary-search"},{"path":"/algorithms/search","name":"/algorithms/search"},{"path":"/algorithms/sorting/bubble-sort","name":"/algorithms/sorting/bubble-sort"},{"path":"/algorithms/sorting/merge-sort","name":"/algorithms/sorting/merge-sort"},{"path":"/algorithms/sorting","name":"/algorithms/sorting"},{"path":"/algorithms/sorting/quick-sort","name":"/algorithms/sorting/quick-sort"},{"path":"/","name":"/index"}];
 export { routes };

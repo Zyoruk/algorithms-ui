@@ -16,10 +16,7 @@ const Page = () => {
 
   return (
     <div>
-      <h1>Page</h1>
-      <div>
-        <svg ref={svgRef} width="1000" height="500"></svg>
-      </div>
+      <svg ref={svgRef} width="1000" height="500"></svg>
     </div>
   );
 };

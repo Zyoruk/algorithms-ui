@@ -3,14 +3,14 @@
 import { useEffect, useRef } from "react";
 import { Controller } from "./controller";
 
-const data = new Array(500)
+const data = new Array(100)
   .fill(0)
-  .map(() => Math.floor(Math.random() * 500))
+  .map(() => Math.floor(Math.random() * 100))
   .sort((a, b) => a - b);
 
 const Page = () => {
   const svgRef = useRef<SVGSVGElement>(null);
-  const target = 249;
+  const target = 35;
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -20,7 +20,6 @@ const Page = () => {
 
   return (
     <div>
-      <h1>Page</h1>
       <div>
         <p>Target: {target}</p>
       </div>
