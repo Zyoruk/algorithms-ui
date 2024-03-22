@@ -1,4 +1,4 @@
-import Index from "./shared/classes/components/Index";
+import Index from "./../../shared/classes/components/Index";
 
 export default function Home() {
   return (
