@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "npm run script:buildRoutes && next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "build": "npm run script:buildRoutes && next build",
+    "start": "npm run script:buildRoutes && next start",
+    "lint": "npm run script:buildRoutes && next lint",
     "script:buildRoutes": "npx tsx src/app/scripts/buildRoutes"
   },
   "dependencies": {
