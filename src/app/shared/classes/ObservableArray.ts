@@ -16,6 +16,7 @@ export class ObservableArray extends Array {
   }
 
   swap(i: number, j: number) {
+    if (this.length <= 1) return;
     let temp = this[i];
     this[i] = this[j];
     this[j] = temp;
@@ -23,11 +24,13 @@ export class ObservableArray extends Array {
   }
 
   compare(i: number, j: number) {
+    if (this.length <= 1) return false;
     this.notifyObservers({ type: "compare", indices: [i, j] });
     return this[i] > this[j];
   }
 
   set(i: number, value: number) {
+    if (this.length === 0) return;
     this[i] = value;
     this.notifyObservers({ type: "set", indices: [i] });
   }

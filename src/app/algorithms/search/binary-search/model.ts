@@ -5,9 +5,10 @@ export class BinarySearch {
   constructor() {
     this.array = new ObservableArray();
   }
+
   async search(array: ObservableArray, target: number) {
     this.array = array;
-    return await this.binarySearch(0, array.length - 1, target);
+    return await this.iterativeBinarySearch(target);
   }
 
   private async binarySearch(
@@ -31,6 +32,32 @@ export class BinarySearch {
       }
 
       return this.binarySearch(mid + 1, high, target);
+    }
+
+    return -1;
+  }
+
+  private async iterativeBinarySearch(target: number): Promise<number> {
+    let low = 0;
+    let high = this.array.length - 1;
+
+    while (low <= high) {
+      let mid = Math.floor(low + (high - low) / 2);
+
+      // Notify observers that we're comparing elements
+      this.array.notifyObservers({ type: "compare", indices: [mid] });
+
+      if (this.array[mid] === target) {
+        return mid;
+      }
+
+      if (this.array[mid] < target) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
     return -1;
