@@ -34,6 +34,14 @@ export class BarsAnimation extends Observer<ObservableArray> {
       )
       .style("fill", "steelblue");
   }
+
+  resetGraph(array: number[]) {
+    this.array = array;
+    this.barWidth = this.width / this.array.length;
+    this.svg.selectAll("rect").remove();
+    this.initializeGraph();
+  }
+
   update(array: ObservableArray, data: ObservedDataEvent) {
     // Bind data to rectangles
     let bars = this.svg.selectAll("rect").data(array);
