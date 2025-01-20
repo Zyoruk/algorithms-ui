@@ -17,7 +17,6 @@ const BinarySearchPage = ( { data } : { data: Array<number>}) => {
   }, [data, svgRef]);
 
   useEffect(() => {
-    console.log("target", target, animationRef.current, isSearching);
     if (!target || !animationRef.current) return;
     if (isSearching) { 
       animationRef.current.searchAndAnimate(data, target).finally(() => setIsSearching(false));

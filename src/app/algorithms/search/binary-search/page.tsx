@@ -1,4 +1,3 @@
-"use client";
 import { SearchProvider } from "@/app/shared/context/SearchContext";
 import BinarySearchPage from "./binarySearch";
 

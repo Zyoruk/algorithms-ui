@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useContext } from 'react';
 import { SearchContext } from '../context/SearchContext';
 
@@ -21,7 +22,7 @@ const SearchInput = ({ disabled }: { disabled: boolean }) => {
     <div>
       <div>
         <p>Enter a target value to search for:</p>
-        <input type="number" value={inputValue} onChange={handleInputChange} disabled={disabled} style={{
+        <input type="number" value={inputValue} onChange={handleInputChange} disabled={disabled} max={range.max} min={range.min} style={{
           color: disabled ? "gray" : "black",
         }}/>
         <button onClick={handleSearchClick} disabled={disabled} style={{ marginLeft: 10}}>Start Search</button>
