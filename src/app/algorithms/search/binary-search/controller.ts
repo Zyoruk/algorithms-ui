@@ -10,9 +10,13 @@ export class Controller {
     this.sorter = new BinarySearch();
   }
 
+  async initializeGraph(arr: number[]) {
+    this.animation = new BarsAnimation(arr, this.svgRef);
+    this.animation.resetGraph(arr);
+  }
+
   async searchAndAnimate(arr: number[], target: number) {
     let observableArr = new ObservableArray(...arr);
-    this.animation = new BarsAnimation(arr, this.svgRef);
     observableArr.addObserver(this.animation);
     await this.sorter.search(observableArr, target);
   }
