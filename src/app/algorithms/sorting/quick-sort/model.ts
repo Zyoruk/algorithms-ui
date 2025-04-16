@@ -11,14 +11,6 @@ export class QuickSort {
     await this.iterativeQuickSort(0, array.length - 1);
   }
 
-  private async quickSort(low: number, high: number) {
-    if (low < high) {
-      let pivotIndex = await this.partition(low, high);
-      await this.quickSort(low, pivotIndex - 1);
-      await this.quickSort(pivotIndex + 1, high);
-    }
-  }
-
   private async partition(low: number, high: number) {
     let pivot = this.array[high];
     let i = low - 1;
@@ -37,11 +29,13 @@ export class QuickSort {
   }
 
   private async iterativeQuickSort(low: number, high: number) {
-    let stack = [];
+    let stack: { low: number; high: number }[] = [];
     stack.push({ low, high });
 
     while (stack.length) {
-      const { low, high } = stack.pop();
+      const popped: { low: number; high: number } | undefined = stack.pop();
+      if (!popped) continue;
+      const { low, high } = popped;
       if (low < high) {
         let pivotIndex = await this.partition(low, high);
         stack.push({ low, high: pivotIndex - 1 });
