@@ -4,24 +4,22 @@ import { usePathname } from 'next/navigation';
 import { navConfig } from '../navConfig';
 
 export default function Breadcrumbs() {
-  const pathname = usePathname();               // e.g. "/algorithms/sorting/quick-sort"
+  const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
+
   const crumbs: { label: string; href: string }[] = [
     { label: 'Home', href: '/' }
   ];
 
-  // if we're on /algorithms/{section}/*
   if (segments[0] === 'algorithms' && segments[1]) {
-    const sectionKey = segments[1];             // "sorting" or "searching"
-    const section = navConfig.find(s =>
-      s.title.toLowerCase() === sectionKey
-    );
+    const sectionKey = segments[1];
+    const section = navConfig.find(s => s.title.toLowerCase() === sectionKey);
     if (section) {
-      const sectionHref = `/${segments[0]}/${sectionKey}`;
-      crumbs.push({ label: section.title, href: sectionHref });
+      crumbs.push({
+        label: section.title,
+        href: `/${segments[0]}/${sectionKey}`
+      });
     }
-
-    // if there's a third segment, it's the specific algorithm
     if (segments[2]) {
       const fullHref = `/${segments.join('/')}`;
       const item = section?.items.find(i => i.href === fullHref);
@@ -32,21 +30,27 @@ export default function Breadcrumbs() {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-gray-300 mb-4">
+    <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-4">
       <ol className="flex items-center space-x-1">
-        {crumbs.map((c, i) => (
-          <li key={c.href} className="flex items-center">
-            {i > 0 && <span className="px-1">/</span>}
-            <Link
-              href={c.href}
-              className={i === crumbs.length - 1
-                ? 'text-gray-400 underline'
-                : 'hover:underline'}
-            >
-              {c.label}
-            </Link>
-          </li>
-        ))}
+        {crumbs.map((c, i) => {
+          const isLeaf = i === crumbs.length - 1;
+          return (
+            <li key={c.href} className="flex items-center">
+              {i > 0 && <span className="px-1">/</span>}
+              {isLeaf ? (
+                <Link
+                  href={c.href}
+                  className="text-gray-400 font-semibold"
+                  aria-current="page"
+                >
+                  {c.label}
+                </Link>
+              ) : (
+                <span className="text-gray-300">{c.label}</span>
+              )}
+            </li>
+          );
+        })}
       </ol>
     </nav>
   );
