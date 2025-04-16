@@ -8,9 +8,9 @@ const data = new Array(100)
 
 const Page = () => {
   return (
-    <SearchProvider range={{ min: Math.min(...data), max: Math.max(...data) }}>
-      <BinarySearchPage data={data} />
-    </SearchProvider>
+      <SearchProvider range={{ min: Math.min(...data), max: Math.max(...data) }}>
+        <BinarySearchPage data={data} />
+      </SearchProvider>
   );
 };
 

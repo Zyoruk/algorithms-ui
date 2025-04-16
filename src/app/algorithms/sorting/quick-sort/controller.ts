@@ -1,21 +1,18 @@
-import { ObservableArray } from "@/app/shared/classes/ObservableArray";
-import { QuickSort } from "./model";
-import { BarsAnimation } from "@/app/shared/classes/BarsAnimation";
+import { ObservableArray } from '@/app/shared/classes/ObservableArray';
+import { QuickSort } from './model';
+import { BarsAnimation } from '@/app/shared/classes/BarsAnimation';
+import { AlgorithmController } from '@/app/shared/classes/SortingAlgorithmControllet';
 
-export class Controller {
-  sorter: QuickSort;
-  animation!: BarsAnimation;
-
-  constructor(private svgRef: SVGSVGElement) {
-    this.sorter = new QuickSort();
-  }
+export class Controller extends AlgorithmController {
+  private sorter = new QuickSort();
+  private animation!: BarsAnimation;
 
   async sortAndAnimate(arr: number[]) {
-    let observableArr = new ObservableArray(...arr);
-    this.animation = new BarsAnimation(arr, this.svgRef);
+    const observableArr = new ObservableArray(...arr);
+    this.animation = new BarsAnimation(arr, this.svgRef, this.speed);
     observableArr.addObserver(this.animation);
     await this.sorter.sort(observableArr);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise(r => setTimeout(r, 1000));
     this.animation.cleanUp(observableArr);
   }
 }

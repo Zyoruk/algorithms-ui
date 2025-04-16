@@ -3,12 +3,13 @@ import { ObservedDataEvent, Observer } from "./Observer";
 import * as d3 from "d3";
 
 export class BarsAnimation extends Observer<ObservableArray> {
+  private baseDuration = 500;
   svg: d3.Selection<SVGSVGElement, unknown, HTMLElement | null, any>;
   width: number;
   height: number;
   barWidth: number;
 
-  constructor(private array: number[] = [], svgRef: SVGSVGElement) {
+  constructor(private array: number[] = [], svgRef: SVGSVGElement, private speed = 1) {
     super();
     this.svg = d3.select(svgRef);
     this.width = +this.svg.attr("width");
@@ -53,13 +54,14 @@ export class BarsAnimation extends Observer<ObservableArray> {
       .style("fill", "steelblue");
 
     // Animate
+    const duration = this.baseDuration / this.speed;
     switch (data.type) {
       case "compare":
         // Animate comparison
         bars
           .filter((d, i) => data.indices.includes(i))
           .transition()
-          .duration(500)
+          .duration(duration)
           .style("fill", "red");
         break;
       case "swap":
@@ -67,7 +69,7 @@ export class BarsAnimation extends Observer<ObservableArray> {
         bars
           .filter((d, i) => data.indices.includes(i))
           .transition()
-          .duration(500)
+          .duration(duration)
           .style("fill", "green");
         break;
       case "set":
@@ -75,7 +77,7 @@ export class BarsAnimation extends Observer<ObservableArray> {
         bars
           .filter((d, i) => data.indices.includes(i))
           .transition()
-          .duration(500)
+          .duration(duration)
           .style("fill", "purple");
         break;
     }

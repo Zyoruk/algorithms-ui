@@ -1,24 +1,7 @@
-"use client";
+'use client'; 
+import SortingVisualizer from '../../../shared/components/SortingVisualizer';
+import { BubbleSortController } from './controller';
 
-import { useEffect, useRef } from "react";
-import { BubbleSortController } from "./controller";
-
-const data = new Array(100).fill(0).map(() => Math.floor(Math.random() * 100));
-
-const Page = () => {
-  const svgRef = useRef<SVGSVGElement>(null);
-
-  useEffect(() => {
-    if (!svgRef.current) return;
-    const animation = new BubbleSortController(svgRef.current);
-    animation.sortAndAnimate(data).then();
-  }, [svgRef]);
-
-  return (
-    <div>
-      <svg ref={svgRef} width="1000" height="500"></svg>
-    </div>
-  );
-};
-
-export default Page;
+export default function Page() {
+  return <SortingVisualizer Controller={BubbleSortController} initialSize={100} />;
+}
