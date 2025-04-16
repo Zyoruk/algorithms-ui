@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run script:buildRoutes && next dev",
-    "build": "npm run script:buildRoutes && next build",
-    "start": "npm run script:buildRoutes && next start",
-    "lint": "npm run script:buildRoutes && next lint",
-    "script:buildRoutes": "npx tsx src/app/scripts/buildRoutes"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@types/d3": "^7.4.3",
