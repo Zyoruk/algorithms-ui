@@ -1,13 +1,14 @@
 import { ObservableArray } from "@/app/shared/classes/ObservableArray";
 import { BubbleSort } from "./model";
 import { BarsAnimation } from "@/app/shared/classes/BarsAnimation";
+import { AlgorithmController } from "@/app/shared/classes/SortingAlgorithmControllet";
 
-export class BubbleSortController {
-  sorter: BubbleSort;
-  animation!: BarsAnimation;
+export class BubbleSortController extends AlgorithmController {
+  private sorter = new BubbleSort();
+  private animation!: BarsAnimation;
 
-  constructor(private svgRef: SVGSVGElement) {
-    this.sorter = new BubbleSort();
+  constructor(protected svgRef: SVGSVGElement) {
+    super(svgRef);
   }
 
   async sortAndAnimate(arr: number[]) {

@@ -1,13 +1,14 @@
 import { ObservableArray } from "@/app/shared/classes/ObservableArray";
 import { BarsAnimation } from "@/app/shared/classes/BarsAnimation";
 import {  MergeSort } from "./model";
+import { AlgorithmController } from "@/app/shared/classes/SortingAlgorithmControllet";
 
-export class MergeSortController {
-  sorter: MergeSort;
-  animation!: BarsAnimation;
+export class MergeSortController extends AlgorithmController {
+  private sorter = new MergeSort();
+  private animation!: BarsAnimation;
 
-  constructor(private svgRef: SVGSVGElement) {
-    this.sorter = new MergeSort();
+  constructor(protected svgRef: SVGSVGElement) {
+    super(svgRef);
   }
 
   async sortAndAnimate(arr: number[]) {
