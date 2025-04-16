@@ -1,24 +1,25 @@
 'use client';
 
-import Link from "next/link";
-import { routes } from "../../routes";
-import { usePathname } from "next/navigation";
+import NavLink from './NavLink';
+import { navConfig } from '../navConfig';
 
 export default function Index() {
-    const pathName = usePathname();
-    return (
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-            <nav>
-                <ul>
-                    {routes.map((route, index) => (
-                        <li key={index}>
-                            <Link href={route.path} className={route.path === pathName ? "text-blue-500" : "hover:text-blue-300"}>
-                                {route.name}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </div>
-    );
+  // flatten all sections into one list
+  const links = navConfig.flatMap((section) => section.items);
+
+  return (
+    <nav
+      role="navigation"
+      aria-label="Main navigation"
+      className="hidden lg:flex mx-auto max-w-5xl w-full"
+    >
+      <ul className="flex space-x-8">
+        {links.map((item) => (
+          <li key={item.href} >
+            <NavLink href={item.href} label={item.label} className="text-gray-100 hover:text-gray-900"/>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }
