@@ -6,7 +6,6 @@ import { useNav } from '../context/NavContext';
 
 export default function Sidebar() {
   const { mobileOpen, closeMobile } = useNav();
-  const _window = typeof window !== 'undefined' ? window : null;
   return (
     <nav
       role="navigation"
@@ -15,7 +14,7 @@ export default function Sidebar() {
         md:relative md:inset-auto md:z-auto md:flex md:flex-col md:w-64
         ${mobileOpen ? 'block' : 'hidden md:block'}
       `}
-      aria-hidden={!mobileOpen && (_window?.innerWidth ?? 0) < 768}
+      aria-hidden={!mobileOpen}
     >
       {navConfig.map((section) => (
         <div key={section.title}>

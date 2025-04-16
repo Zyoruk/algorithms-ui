@@ -22,6 +22,7 @@ export interface NavItem {
       title: 'Searching',
       items: [
         { label: 'Binary Search', href: '/algorithms/searching/binary-search' },
+        { label: 'Binary Tree Search', href: '/algorithms/searching/binary-tree' },
         // add more search algs here…
       ],
     },
