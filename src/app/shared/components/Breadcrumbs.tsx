@@ -32,7 +32,7 @@ export default function Breadcrumbs() {
   }
 
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-4">
+    <nav aria-label="Breadcrumb" className="text-sm text-gray-300 mb-4">
       <ol className="flex items-center space-x-1">
         {crumbs.map((c, i) => (
           <li key={c.href} className="flex items-center">
@@ -40,7 +40,7 @@ export default function Breadcrumbs() {
             <Link
               href={c.href}
               className={i === crumbs.length - 1
-                ? 'text-gray-900'
+                ? 'text-gray-400 underline'
                 : 'hover:underline'}
             >
               {c.label}
