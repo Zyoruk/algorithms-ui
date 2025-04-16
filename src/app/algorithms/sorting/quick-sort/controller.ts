@@ -7,13 +7,9 @@ export class Controller extends AlgorithmController {
   private sorter = new QuickSort();
   private animation!: BarsAnimation;
 
-  constructor(svgRef: SVGSVGElement) {
-    super(svgRef);
-  }
-
   async sortAndAnimate(arr: number[]) {
     const observableArr = new ObservableArray(...arr);
-    this.animation = new BarsAnimation(arr, this.svgRef);
+    this.animation = new BarsAnimation(arr, this.svgRef, this.speed);
     observableArr.addObserver(this.animation);
     await this.sorter.sort(observableArr);
     await new Promise(r => setTimeout(r, 1000));

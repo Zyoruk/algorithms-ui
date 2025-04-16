@@ -7,13 +7,9 @@ export class MergeSortController extends AlgorithmController {
   private sorter = new MergeSort();
   private animation!: BarsAnimation;
 
-  constructor(protected svgRef: SVGSVGElement) {
-    super(svgRef);
-  }
-
   async sortAndAnimate(arr: number[]) {
     let observableArr = new ObservableArray(...arr);
-    this.animation = new BarsAnimation(arr, this.svgRef);
+    this.animation = new BarsAnimation(arr, this.svgRef, this.speed);
     observableArr.addObserver(this.animation);
     await this.sorter.sort(observableArr);
     await new Promise((resolve) => setTimeout(resolve, 1000));
