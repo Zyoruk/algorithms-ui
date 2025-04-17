@@ -1,6 +1,7 @@
-import { ObservableArray } from "@/app/shared/classes/ObservableArray";
-import { BinarySearch } from "./model";
 import { BarsAnimation } from "@/app/shared/classes/BarsAnimation";
+import { ObservableArray } from "@/app/shared/classes/ObservableArray";
+
+import { BinarySearch } from "./model";
 
 export class Controller {
   sorter: BinarySearch;
@@ -16,7 +17,7 @@ export class Controller {
   }
 
   async searchAndAnimate(arr: number[], target: number) {
-    let observableArr = new ObservableArray(...arr);
+    const observableArr = new ObservableArray(...arr);
     observableArr.addObserver(this.animation);
     await this.sorter.search(observableArr, target);
   }

@@ -1,4 +1,5 @@
 import { SearchProvider } from "@/app/shared/context/SearchContext";
+
 import BinarySearchPage from "./binarySearch";
 
 const data = new Array(100)

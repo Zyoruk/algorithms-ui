@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+
 import { BinaryTreeSearchUI } from './binaryTreeSearch'
 
 export const metadata: Metadata = {

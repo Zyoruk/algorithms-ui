@@ -18,7 +18,7 @@ export class BinarySearch {
   ): Promise<number> {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     if (high >= low) {
-      let mid = Math.floor(low + (high - low) / 2);
+      const mid = Math.floor(low + (high - low) / 2);
 
       // Notify observers that we're comparing elements
       this.array.notifyObservers({ type: "compare", indices: [mid] });
@@ -42,7 +42,7 @@ export class BinarySearch {
     let high = this.array.length - 1;
 
     while (low <= high) {
-      let mid = Math.floor(low + (high - low) / 2);
+      const mid = Math.floor(low + (high - low) / 2);
 
       // Notify observers that we're comparing elements
       this.array.notifyObservers({ type: "compare", indices: [mid] });

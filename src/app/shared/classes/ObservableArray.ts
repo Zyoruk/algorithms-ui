@@ -17,7 +17,7 @@ export class ObservableArray extends Array {
 
   swap(i: number, j: number) {
     if (this.length <= 1) return;
-    let temp = this[i];
+    const temp = this[i];
     this[i] = this[j];
     this[j] = temp;
     this.notifyObservers({ type: "swap", indices: [i, j] });

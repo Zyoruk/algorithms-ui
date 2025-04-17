@@ -17,7 +17,7 @@ export class MergeSort {
 
   private async mergeSort(low: number, high: number) {
     if (low < high) {
-      let middle = Math.floor((low + high) / 2);
+      const middle = Math.floor((low + high) / 2);
       await this.mergeSort(low, middle);
       await this.mergeSort(middle + 1, high);
       await this.merge(low, middle, high);

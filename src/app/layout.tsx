@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
 import "./globals.css";
+import Breadcrumbs from "./shared/components/Breadcrumbs";
 import Header from "./shared/components/Header";
 import Sidebar from "./shared/components/SideBar";
-import Breadcrumbs from "./shared/components/Breadcrumbs";
 import { NavProvider } from "./shared/context/NavContext";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Algorithms UI",
   description: "Next.js app for visualizing algorithms",
 };
-
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

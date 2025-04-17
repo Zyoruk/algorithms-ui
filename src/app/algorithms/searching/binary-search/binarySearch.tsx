@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useContext } from "react";
-import { Controller } from "./controller";
+
 import SearchInput from "@/app/shared/components/SearchInput";
 import { SearchContext } from "@/app/shared/context/SearchContext";
+
+import { Controller } from "./controller";
 
 const BinarySearchPage = ( { data } : { data: Array<number>}) => {
   const svgRef = useRef<SVGSVGElement>(null);

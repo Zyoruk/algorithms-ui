@@ -1,7 +1,9 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import SortingControls from './SortingControls';
+
 import { AlgorithmController } from '../classes/SortingAlgorithmControllet';
+
+import SortingControls from './SortingControls';
 
 interface Props<C extends AlgorithmController> {
   Controller: new (svg: SVGSVGElement, speed?: number) => C;
