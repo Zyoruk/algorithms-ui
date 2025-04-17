@@ -41,7 +41,7 @@ export class TreeAnimation {
     }
     dfs(this.root, 0)
   }
-
+  
   render() {
     // clear
     while (this.svg.firstChild) this.svg.removeChild(this.svg.firstChild)
@@ -92,11 +92,28 @@ export class TreeAnimation {
       this.svg.appendChild(g)
       this.nodeGMap.set(node, g)
     }
+
+    this.center()
   }
 
-  /** optional centering if svg is in a container */
+  /** optional centering: fit all nodes in viewBox */
   center() {
-    // no-op or implement viewBox centering
+    if (this.positions.size === 0) return
+
+    // gather all x/y coords
+    const xs = Array.from(this.positions.values()).map(p => p.x)
+    const ys = Array.from(this.positions.values()).map(p => p.y)
+
+    const minX = Math.min(...xs) - this.nodeR
+    const maxX = Math.max(...xs) + this.nodeR
+    const minY = Math.min(...ys) - this.nodeR
+    const maxY = Math.max(...ys) + this.nodeR
+
+    const width = maxX - minX
+    const height = maxY - minY
+
+    this.svg.setAttribute('viewBox', `${minX} ${minY} ${width} ${height}`)
+    this.svg.setAttribute('preserveAspectRatio', 'xMidYMid meet')
   }
 
   update() {
