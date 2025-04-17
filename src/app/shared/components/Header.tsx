@@ -1,9 +1,12 @@
 'use client';
-import React, { useState } from 'react';
 import Link from 'next/link';
-import NavLink from './NavLink';
-import { navConfig } from '../navConfig';
+import React from 'react';
+
 import { useNav } from '../context/NavContext';
+import { navConfig } from '../navConfig';
+
+import NavLink from './NavLink';
+
 
 export default function Header() {
  const {mobileOpen, toggleMobile} = useNav();

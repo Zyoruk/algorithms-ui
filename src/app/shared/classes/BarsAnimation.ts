@@ -1,10 +1,11 @@
+import * as d3 from "d3";
+
 import { ObservableArray } from "./ObservableArray";
 import { ObservedDataEvent, Observer } from "./Observer";
-import * as d3 from "d3";
 
 export class BarsAnimation extends Observer<ObservableArray> {
   private baseDuration = 500;
-  svg: d3.Selection<SVGSVGElement, unknown, HTMLElement | null, any>;
+  svg: d3.Selection<SVGSVGElement, unknown, HTMLElement | null, unknown>;
   width: number;
   height: number;
   barWidth: number;
@@ -20,7 +21,7 @@ export class BarsAnimation extends Observer<ObservableArray> {
 
   private initializeGraph() {
     // Bind data to rectangles
-    let bars = this.svg.selectAll("rect").data(this.array);
+    const bars = this.svg.selectAll("rect").data(this.array);
 
     // Enter new bars
     bars
@@ -45,7 +46,7 @@ export class BarsAnimation extends Observer<ObservableArray> {
 
   update(array: ObservableArray, data: ObservedDataEvent) {
     // Bind data to rectangles
-    let bars = this.svg.selectAll("rect").data(array);
+    const bars = this.svg.selectAll("rect").data(array);
 
     // Update existing bars
     bars
@@ -85,7 +86,7 @@ export class BarsAnimation extends Observer<ObservableArray> {
 
   cleanUp(array: ObservableArray) {
     // Bind data to rectangles
-    let bars = this.svg.selectAll("rect").data(array);
+    const bars = this.svg.selectAll("rect").data(array);
     // Update existing bars
     bars
       .attr("height", (d) => (this.height * d) / d3.max(array))

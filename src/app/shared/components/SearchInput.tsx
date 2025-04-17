@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useContext } from 'react';
+
 import { SearchContext } from '../context/SearchContext';
 
 const SearchInput = ({ disabled }: { disabled: boolean }) => {

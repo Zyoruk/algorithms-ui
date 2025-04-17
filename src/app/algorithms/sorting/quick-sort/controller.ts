@@ -1,7 +1,8 @@
-import { ObservableArray } from '@/app/shared/classes/ObservableArray';
-import { QuickSort } from './model';
 import { BarsAnimation } from '@/app/shared/classes/BarsAnimation';
+import { ObservableArray } from '@/app/shared/classes/ObservableArray';
 import { AlgorithmController } from '@/app/shared/classes/SortingAlgorithmControllet';
+
+import { QuickSort } from './model';
 
 export class Controller extends AlgorithmController {
   private sorter = new QuickSort();

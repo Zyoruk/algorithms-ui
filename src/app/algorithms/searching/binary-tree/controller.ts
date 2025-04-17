@@ -1,7 +1,8 @@
-import { ObservableTree, TreeEvent } from '@/app/shared/classes/ObservableTree'
-import { TreeNode } from '@/app/shared/classes/TreeNode'
-import { BinaryTreeSearch } from './model'
+import { ObservableTree } from '@/app/shared/classes/ObservableTree'
 import { TreeAnimation } from '@/app/shared/classes/TreeAnimation'
+import { TreeNode } from '@/app/shared/classes/TreeNode'
+
+import { BinaryTreeSearch } from './model'
 
 export class Controller {
   private observableTree = new ObservableTree<number>()

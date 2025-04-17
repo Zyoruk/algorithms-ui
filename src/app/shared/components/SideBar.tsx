@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
-import { navConfig } from '../navConfig';
-import NavLink from './NavLink';
+
 import { useNav } from '../context/NavContext';
+import { navConfig } from '../navConfig';
+
+import NavLink from './NavLink';
 
 export default function Sidebar() {
   const { mobileOpen, closeMobile } = useNav();

@@ -50,8 +50,8 @@ export class TreeAnimation {
     console.log(this.positions)
     // draw edges
     for (const [node, pos] of this.positions) {
-      ;[ 'left', 'right' ] .forEach(dir => {
-        const child = (node as any)[dir] as TreeNode<number> | null
+      ;['left', 'right'].forEach(dir => {
+        const child = dir === 'left' ? node.left : node.right
         if (child && this.positions.has(child)) {
           const cp = this.positions.get(child)!
           const line = document.createElementNS(
