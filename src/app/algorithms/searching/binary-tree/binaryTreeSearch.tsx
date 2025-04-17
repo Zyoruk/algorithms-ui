@@ -10,7 +10,7 @@ export const BinaryTreeSearchUI: React.FC = () => {
 
     // generate a new random array
     const shuffleValues = () => {
-        const arr = Array.from({ length: 10 }, () =>
+        const arr = Array.from({ length: 30 }, () =>
             Math.floor(Math.random() * 100)
         )
         setValues(arr)
@@ -38,7 +38,7 @@ export const BinaryTreeSearchUI: React.FC = () => {
         }
     }, [values, target])
     return (
-        <div className="p-4">
+        <div className="w-[80vw] flex flex-col h-full">
             <div className="flex gap-2 mb-4" suppressHydrationWarning>
                 <button onClick={shuffleValues} className="btn" suppressHydrationWarning>Shuffle</button>
                 <input
@@ -59,7 +59,15 @@ export const BinaryTreeSearchUI: React.FC = () => {
                     Reset
                 </button>
             </div>
-            <svg ref={svgRef} width="600" height="100vh" />
+
+            <div className="flex-1 w-full overflow-x-auto overflow-y-hidden">
+                <div className="inline-block min-w-max">
+                    <svg
+                        ref={svgRef}
+                        className="h-[600px]"
+                    />
+                </div>
+            </div>
         </div>
     )
 }
